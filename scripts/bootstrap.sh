@@ -1,5 +1,8 @@
 #! /bin/sh
 
+GLUSTERFS_PACKAGE_NAME=glusterfs
+GLUSTERFS_LOCAL_PACKAGE=/vagrant/${GLUSTERFS_PACKAGE_NAME}*.txz
+
 sysrc glusterd_enable="YES"
 sysrc -f /boot/loader.conf fuse_load="YES"
 kldstat -qn fuse || kldload fuse
@@ -21,7 +24,12 @@ mkdir -p /mnt/replicated
 mkdir -p /gluster/replicated
 
 # Install and setup gluster on each server
-which -s glusterfs || pkg install -y glusterfs
+if ! which -s glusterfs; then
+	# Check if there is a local package and use that instead
+	[ -f ${GLUSTERFS_LOCAL_PACKAGE} ] && GLUSTERFS_PACKAGE_NAME=${GLUSTERFS_LOCAL_PACKAGE}
+	pkg install -y ${GLUSTERFS_PACKAGE_NAME}
+fi
+
 service glusterd status >/dev/null 2>&1 || service glusterd start
 
 

@@ -13,11 +13,16 @@ for a complete explanation of what's going on take a look at the article:
 
 ## Quick Start
 
-Clone this repository and then run `vagrant up`.  Follow the on-screen instructions
-to continue.
+Clone this repository if not already done.
 
 ```
 git clone https://github.com/tuaris/Vagrant_GlusterFS
+```
+
+Change into the repository root directory and run `vagrant up`.  Follow any
+on-screen instructions to continue.
+
+```
 cd Vagrant_GlusterFS
 vagrant up
 ```
@@ -29,8 +34,8 @@ the setup.
 vagrant provision
 ```
 
-Optionally you can specify `--with-provision mounts` to also create the FUSE-FS
-mount points on each server.
+Afterwards you can optionally re-run `vagrant provision` with the `--with-provision mounts` 
+flag to create the FUSE-FS mount points on each server.
 
 ```
 vagrant provision --with-provision mounts
@@ -74,6 +79,17 @@ Location you wish to store the VDI file for the GlusterFS brick.  The default
 value below stores it in the same directory as the `Vagrantfile`.
 ```
 BRICK_VDI_PATH = "."
+```
+
+## GlusterFS Package
+
+You can use your own GlusterFS package instead of what's currently available
+at the official pkg repos.  To do this place your custom built package in the 
+root directory of this repository.  The package must follow a the following 
+naming scheme in order to be picked up:
+
+```
+glusterfs-*.txz
 ```
 
 ## Advanced Options
