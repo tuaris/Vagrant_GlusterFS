@@ -89,7 +89,7 @@ root directory of this repository.  The package must follow a the following
 naming scheme in order to be picked up:
 
 ```
-glusterfs-*.txz
+glusterfs*.txz
 ```
 
 ## Advanced Options
