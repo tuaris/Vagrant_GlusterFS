@@ -85,12 +85,15 @@ BRICK_VDI_PATH = "."
 
 You can use your own GlusterFS package instead of what's currently available
 at the official pkg repos.  To do this place your custom built package in the 
-root directory of this repository.  The package must follow a the following 
+root directory of this repository.  The package must follow the following 
 naming scheme in order to be picked up:
 
 ```
 glusterfs*.txz
 ```
+
+Make sure you only have one package, otherwise pkg will attempt to install anything
+that matches the above wildcard.
 
 ## Advanced Options
 
