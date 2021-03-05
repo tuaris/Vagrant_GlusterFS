@@ -49,6 +49,29 @@ vagrant ssh sun
 
 When you are done playing with Gluster, run `vagrant destroy -fg`
 
+## Host Machine as Client
+
+To mount the GlusterFS volume on your Vagrant host machine you'll need ensure it is
+able to resolve hostnames to the correct IP addresses of the Vagrant guests.
+
+For example (if using the default domain and IP's), you would need to add the 
+following to the `/etc/hosts` file on your host machine:
+
+```
+172.16.28.10 sun.gluster.internal.local sun
+172.16.28.11 earth.gluster.internal.local earth
+172.16.28.12 moon.gluster.internal.local moon
+```
+
+Install the GlusterFS FUSE client.  If your host machine is FreeBSD you can use 
+`pkg`.  The Gluster ports include the FUSE client as park of the package.
+
+Finally, run the `mount_glusterfs` command along with any options you want:
+
+```
+mount_glusterfs -o log-level=TRACE sun.gluster.internal.local:replicated /mnt/replicated
+```
+
 ## Customizing
 
 If for whatever reason the default values need to be changed, you can edit the
