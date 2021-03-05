@@ -64,9 +64,9 @@ following to the `/etc/hosts` file on your host machine:
 ```
 
 Install the GlusterFS FUSE client.  If your host machine is FreeBSD you can use 
-`pkg`.  The Gluster ports include the FUSE client as park of the package.
+`pkg`.  The Gluster ports include the FUSE client as part of the package.
 
-Finally, run the `mount_glusterfs` command along with any options you want:
+Run the `mount_glusterfs` command along with any options you want:
 
 ```
 mount_glusterfs -o log-level=TRACE sun.gluster.internal.local:replicated /mnt/replicated
