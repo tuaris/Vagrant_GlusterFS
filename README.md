@@ -83,10 +83,10 @@ BRICK_VDI_PATH = "."
 
 ## GlusterFS Package
 
-You can use your own GlusterFS package instead of what's currently available
-at the official pkg repos.  To do this place your custom built package in the 
-root directory of this repository.  The package must follow the following 
-naming scheme in order to be picked up:
+You can use your own GlusterFS package (like one you can build from my [Gluster Ports](https://github.com/tuaris/freebsd-glusterfs)) 
+instead of what's currently available at the official pkg repos.  To do this place 
+your custom built package in the root directory of this repository.  The package 
+must follow the following naming scheme in order to be picked up:
 
 ```
 glusterfs*.txz
